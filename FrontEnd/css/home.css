@@ -1,0 +1,31 @@
+/**/
+
+.container-fluid{
+    background-color: #889bab;
+}
+
+.container-app{
+    background-color: white;
+}
+.card-header{
+    background-color: #008C38;
+}
+
+.card-header h1{
+    color: white;
+
+}
+
+.img-thumbnail{
+    width: 50%;
+}
+
+.btn-pagina{
+    background-color: #6BA54A;
+    color: white;
+}
+
+.btn-pagina:hover{
+    background-color: #3f5d29;
+    color: white;
+}

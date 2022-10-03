@@ -1,0 +1,33 @@
+.btn-cadastro{
+    background-color: #008C38;
+    color: white;
+}
+
+.btn-cadastro:hover{
+    background-color: #086e31;
+    color: white;
+}
+
+.modal-header{
+    background-color: #086e31;
+    color: white;
+}
+
+.btn-pagina{
+    background-color: #6BA54A;
+    color: white;
+}
+
+.btn-pagina:hover{
+    background-color: #3f5d29;
+    color: white;
+}
+
+#myChart{
+    max-height: 400px;
+}
+
+.error{
+    color: red;
+    display: none;
+}

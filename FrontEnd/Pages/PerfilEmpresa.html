@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/Perfis.css" >
+  <title>Perfil da Empresa</title>
+</head>
+<body>
+
+<main class="container">
+  <div class="d-flex align-items-center p-3 my-3 text-white bg-success rounded shadow-sm">
+    <img class="me-3" src="../assets/office-building.png" alt="" width="48" height="48">
+    <div class="lh-1">
+      <h1 class="h6 mb-0 text-white lh-1">Perfil</h1>
+      <small>Empresa</small>
+    </div>
+  </div>
+  <div class="container-fluid py-5 rounded shadow-lg">
+    <a href="#" class="btn btn-cadastro " data-bs-toggle="modal" data-bs-target="#CadastroEmpresaModal">Cadastrar Empresa</a>
+    <a href="./PerfilCandidato.html" class="btn btn-pagina  ">Perfil do candidato</a>
+    <a href="#" class="btn btn-warning" id="listar-candidatos">Listar Candidatos</a>
+    <a href="#" class="btn btn-danger" id="gerar-grafico">Gerar Gráfico</a>
+
+  </div>
+
+  <div class="my-3 p-3 bg-body  rounded shadow-lg">
+    <h6 class="border-bottom pb-2 mb-0">Lista de Candidatos</h6>
+
+    <table class="table table-striped" id="table-empresa">
+      <thead>
+      <th>DESCRIÇÃO</th>
+      <th>SKILLS</th>
+      <th>AÇÕES</th>
+      </thead>
+      <tbody class="" id="tbody"></tbody>
+    </table>
+  </div>
+
+  <div class="my-3 p-3 bg-body text-center rounded shadow-lg ">
+    <h6 class="border-bottom pb-2 mb-0">Gráfico de Competências</h6>
+    <canvas id="myChart"></canvas>
+  </div>
+
+
+  <div class="modal fade" id="CadastroEmpresaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header ">
+          <h5 class="modal-title" id="exampleModalLabel">Cadastro de Empresa</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form class="modal-body" id="modal-form">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="NomeInput" placeholder="Nome" required>
+            <label for="NomeInput">Nome</label>
+            <span id="erroNome" class="error">Digite o Nome corretamente</span>
+
+          </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="EmailInput" placeholder="E-mail" required>
+            <label for="EmailInput">E-mail</label>
+            <span id="erroEmail" class="error">Digite o E-mail corretamente. Ex: email@email.com</span>
+
+          </div>
+          <div class="form-floating mb-3">
+            <input
+                    type="text"
+                    class="form-control"
+                    id="CnpjInput"
+                    placeholder="CNPJ"
+                    maxlength="18"
+                    required
+            >
+            <label for="CnpjInput">CNPJ</label>
+            <span id="erroCnpj" class="error">Digite o CNPJ corretamente.Ex: 09.268.560/0001-04</span>
+
+          </div>
+          <div class="row g-3">
+            <div class="col-md mb-3">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="EstadoInput" placeholder="Estado" required>
+                <label for="EstadoInput">Estado</label>
+                <span id="erroEstado" class="error">Digite o Estado completo. Ex: Goiás</span>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="CepInput" maxlength="9" placeholder="Cep" required>
+                <label for="CepInput">CEP</label>
+                <span id="erroCep" class="error">Digite o CEP corretamente. Ex: 78980-025</span>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="Paisinput" placeholder="Pais" required>
+                <label for="Paisinput">Pais</label>
+                <span id="erroPais" class="error">Digite o País corretamente</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-floating mb-3">
+            <textarea type="text" class="form-control" id="DescInput" placeholder="Descrição" required></textarea>
+            <label for="DescInput">Descrição</label>
+            <span id="erroDesc" class="error">Digite uma descrição.</span>
+          </div>
+
+          <label class="form-check-label mb-3">
+            Competências Necessárias:
+          </label>
+          <span id="erroSkill" class="error">Escolha ao menos uma Competência</span>
+          <div class="row g-3 md-3">
+            <div class="col-md">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Python" id="CheckPythonEmpresas">
+                <label class="form-check-label" for="CheckInput">
+                  Python
+                </label>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Java" id="CheckJavaEmpresas">
+                <label class="form-check-label" for="CheckInput">
+                  Java
+                </label>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="JavaScript" id="CheckJSEmpresas">
+                <label class="form-check-label" for="CheckInput">
+                  JavaScript
+                </label>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Typescript" id="CheckTSEmpresas">
+                <label class="form-check-label" for="CheckInput">
+                  Typescript
+                </label>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Groovy" id="CheckGroovyEmpresas">
+                <label class="form-check-label" for="CheckInput">
+                  Groovy
+                </label>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Grails" id="CheckGrailsEmpresas">
+                <label class="form-check-label" for="CheckInput">
+                  Grails
+                </label>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Angular" id="CheckAngularEmpresas">
+                <label class="form-check-label" for="CheckInput">
+                  Angular
+                </label>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="PostgreSQL" id="CheckPostEmpresas">
+                <label class="form-check-label" for="CheckInput">
+                  PostgreSQL
+                </label>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="modal-footer mt-2">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            <button type="submit" class="btn btn-cadastro">Cadastrar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+</main>
+
+
+<!--Scripts-->
+<script type="module" src="../js/Empresa.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js" integrity="sha512-GMGzUEevhWh8Tc/njS0bDpwgxdCJLQBWG3Z2Ct+JGOpVnEmjvNx6ts4v6A2XJf1HOrtOsfhv3hBKpK9kE5z8AQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>
