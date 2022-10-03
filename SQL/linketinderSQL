@@ -1,0 +1,159 @@
+-- CREATE TABLE candidatos(
+-- 	id SERIAL PRIMARY KEY,
+--   	nome VARCHAR(50) NOT NULL,
+--   	sobrenome VARCHAR(50) NOT NULL,
+--   	data_nascimento DATE NOT NULL,
+--  	email VARCHAR(50) UNIQUE NOT NULL,
+--   	cpf VARCHAR(14) UNIQUE NOT NULL,
+--   	pais VARCHAR(50) NOT NULL,
+--   	cep VARCHAR(9) 	NOT NULL,
+--   	descricao TEXT 	NOT NULL,
+--   	senha VARCHAR(20) NOT NULL
+-- );
+
+-- CREATE TABLE empresas (
+-- 	id SERIAL  PRIMARY KEY,
+-- 	   nome VARCHAR(50) NOT NULL,
+-- 	   cnpj VARCHAR(18) NOT NULL,
+--     email VARCHAR(50) NOT NULL,
+--     descricao TEXT NOT NULL,
+--     pais VARCHAR(50) NOT NULL,
+--     cep VARCHAR(9) NOT NULL,
+--     senha VARCHAR(20) NOT NULL
+-- );
+
+-- CREATE TABLE vagas(
+-- 	id SERIAL PRIMARY KEY,
+-- 	nome VARCHAR(50) NOT NULL,
+-- 	descricao TEXT NOT NULL,
+-- 	localizacao VARCHAR(50) NOT NULL,
+-- 	id_empresas INT REFERENCES empresas(id) NOT NULL
+
+-- );
+-- CREATE TABLE competencias(
+-- 	id SERIAL PRIMARY KEY,
+-- 	nome VARCHAR(50) NOT NULL
+-- );
+
+-- CREATE TABLE candidato_competencias (
+-- 	id_candidato INT REFERENCES candidatos(id) NOT NULL,
+-- 	id_competencias INT REFERENCES competencias(id) NOT NULL
+-- );
+
+-- CREATE TABLE vagas_competencias(
+-- 	id_vagas INT REFERENCES empresas(id) NOT NULL,
+-- 	id_competencias INT REFERENCES competencias(id) NOT NULL
+-- );
+
+-- INSERT INTO competencias(nome) VALUES ('Python'),('Java'),('JavaScript'),('Typescript'),
+-- 									   ('Groovy'),('Grails'),('Angular'),('PostgreSQL');
+--  SELECT * FROM competencias;
+
+-- INSERT INTO candidatos(nome, sobrenome, data_nascimento, email, cpf, pais, cep, descricao, senha )
+-- VALUES ('Hyago', 'Rodrigues', '1992-03-19',
+-- 		'hyago@email.com', '094.534.457-21',
+-- 		'Brasil', '75690-690',
+-- 		'Desenvolvedor Full-Stack, com experiência comprovada.',
+-- 		'senhadobanco'
+-- 	   ),
+-- 	   ('Maria Alice', 'Meira Reis', '1996-12-17',
+-- 	   	'maria@email.com', '125.547.951-98',
+-- 		'Brasil', '72358-654',
+-- 		'Desenvolvedor Front-End com experiência em ReactJS',
+-- 		'senhadetudo'
+-- 	   ),
+-- 	   ('Gabriel', 'Fernandes', '1996-03-03',
+-- 	   	'gh@email.com', '142.125.741-58',
+-- 		'Brasil', '74358-965',
+-- 		'Desenvolvedor Back-end, entusiasta de Machine Lerning',
+-- 		'senhadococ'
+-- 	   ),
+-- 	   ('Gustavo', 'Silva', '2000-12-22',
+-- 	   	'guh@email.com', '241.555.741-58',
+-- 		'Brasil', '75758-965',
+-- 		'Estudante de Engenharia de software',
+-- 		'senhadoguh'
+-- 	   ),
+-- 	   ('André', 'Parrine', '1999-05-21',
+-- 	   	'guh@email.com', '657.575.951-21',
+-- 		'Brasil', '75758-965',
+-- 		'Estudante de Engenharia de ADS',
+-- 		'senhadodeh'
+-- 	   );
+
+-- SELECT * from candidatos;
+
+-- INSERT INTO empresas(nome, cnpj, email, descricao, pais, cep, senha)
+-- VALUES ('Google','41.434.114/0001-27','g@email.com',
+-- 		'Empresa de pesquisa','EUA','75425-378',
+-- 		'g@d20321'),
+-- 		('Amazon','41.434.114/0001-27','aa@email.com',
+-- 		'Empresa de vendas de produtos','EUA','75425-378',
+-- 		'a@d20321'),
+-- 		('Apple','41.434.114/0001-27','ap@email.com',
+-- 		'Empresa de desenvolvimento de produtos tecnológicos','EUA','75425-378',
+-- 		'aa@d20321'),
+-- 		('Tesla','41.434.114/0001-27','tt@email.com',
+-- 		'Empresa de desenvolvimento de tecnologia aero-espacial','EUA','75425-378',
+-- 		'tt@d20321'),
+-- 		('Adobe','41.434.114/0001-27','adb@email.com',
+-- 		'Empresa de softwares para edição de imagens/vídeos','EUA','75425-378',
+-- 		'adb@d20321');
+
+-- SELECT * FROM empresas;
+
+
+-- INSERT INTO vagas(nome, descricao, localizacao, id_empresas)
+-- VALUES ('Desenvolvedor Front-end JR',
+-- 		'Vaga de desenvolvedor front-end jr -  CLT - Benefícios: Vale Refeição Burgão do Zé ',
+-- 	    'Remoto/Hibrido - Brasil',
+-- 		2
+-- 	   ),
+-- 	   ('Desenvolvedor Back-end Pleno',
+-- 		'Vaga de desenvolvedor Back Pleno - PJ - Salário em Dólar ',
+-- 	    'Remoto - EUA',
+-- 		1
+-- 	   ),
+-- 	   ('Analista de dados',
+-- 		'Vaga de Analista de dados - PJ/CLT  ',
+-- 	    'Remoto - EUA',
+-- 		4
+-- 	   ),
+-- 	   ('Desenvolvedor Full-Stack Senior',
+-- 		'Vaga de Desenvolvedor Full-Stack Senior - PJ - Salário em EURO ',
+-- 	    'Remoto - Portugal',
+-- 		3
+-- 	   ),
+-- 	   ('Desenvolvedor Mobile',
+-- 		'Vaga de Desenvolvedor Mobile - PJ - Salário em dólar ',
+-- 	    'Remoto - EUA',
+-- 		5
+-- 	   );
+	   
+
+-- SELECT * FROM vagas;
+
+-- INSERT INTO candidato_competencias(id_candidato, id_competencias) VALUES (1,3);
+-- INSERT INTO candidato_competencias(id_candidato, id_competencias) VALUES (2,4);
+-- INSERT INTO candidato_competencias(id_candidato, id_competencias) VALUES (3,2);
+-- INSERT INTO candidato_competencias(id_candidato, id_competencias) VALUES (4,1);
+-- INSERT INTO candidato_competencias(id_candidato, id_competencias) VALUES (5,5);
+
+
+-- SELECT * FROM candidato_competencias;
+
+-- INSERT INTO vagas_competencias(id_vagas, id_competencias) VALUES (1,3);
+-- INSERT INTO vagas_competencias(id_vagas, id_competencias) VALUES (2,4);
+-- INSERT INTO vagas_competencias(id_vagas, id_competencias) VALUES (3,2);
+-- INSERT INTO vagas_competencias(id_vagas, id_competencias) VALUES (4,1);	
+-- INSERT INTO vagas_competencias(id_vagas, id_competencias) VALUES (5,5);	
+-- SELECT * FROM vagas_competencias;
+
+
+
+-- INSERT INTO candidato_competencias(id_candidato, id_competencias) VALUES (1,2);
+-- SELECT com.nome
+-- FROM candidato_competencias ccom
+-- JOIN candidatos c ON c.id = ccom.id_candidato
+-- JOIN competencias com ON com.id = ccom.id_competencias
+-- WHERE c.id = 1
