@@ -3,10 +3,13 @@
  */
 package Linketinder.Gradle
 
-import Linketinder.Gradle.BancoDeDados.Banco
+
+import Linketinder.Gradle.DAO.CandidatoDAO
+import Linketinder.Gradle.DAO.EmpresaDAO
+import Linketinder.Gradle.DAO.VagasDAO
 
 static void main(String[] args) {
-    Scanner scan = new Scanner(System.in)
+    Scanner input = new Scanner(System.in)
     boolean exit = false
     while(!exit){
         println("Escolha uma opção: " +
@@ -17,22 +20,22 @@ static void main(String[] args) {
                 "\n 5 - Inserir nova Empresa " +
                 "\n 6 - Sair"
         )
-        int opcao = scan.nextInt();
+        int opcao = input.nextInt();
         switch(opcao){
             case 1:
-                Banco.listar_empresas()
+                EmpresaDAO.listar_empresas()
                 break
             case 2:
-                Banco.listar_candidatos()
+                CandidatoDAO.listar_candidatos()
                 break
             case 3:
-                Banco.listar_vagas()
+                VagasDAO.listar_vagas()
                 break
             case 4:
-                Banco.inserir_candidato()
+                CandidatoDAO.menu_candidato()
                 break
             case 5:
-                Banco.inserir_empresa()
+                EmpresaDAO.menu_empresa()
                 break
             case 6:
                 exit = true
