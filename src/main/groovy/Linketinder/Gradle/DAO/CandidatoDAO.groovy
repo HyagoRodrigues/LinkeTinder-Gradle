@@ -1,13 +1,15 @@
 package Linketinder.Gradle.DAO
 
 import Linketinder.Gradle.Classes.PessoaFisica
+import Linketinder.Gradle.Metodos.ConectionFactory
 import Linketinder.Gradle.Metodos.Utils
 import groovy.sql.Sql
 
 class CandidatoDAO {
 
+
     static void listar_candidatos() {
-        def sql = Utils.conect()
+        def sql = ConectionFactory.conect()
         sql.eachRow('SELECT * FROM candidatos') {
             lista_candidato ->
                 println("\nNome: ${lista_candidato.nome} ${lista_candidato.sobrenome}" +
@@ -20,7 +22,7 @@ class CandidatoDAO {
     }
 
     static void listar_competencias_candidato(id) {
-        def sql = Utils.conect();
+        def sql = ConectionFactory.conect();
         sql.eachRow('SELECT com.nome as nome\n' +
                 'FROM candidato_competencias ccom\n' +
                 'JOIN candidatos c ON c.id = ccom.id_candidato\n' +
@@ -33,7 +35,7 @@ class CandidatoDAO {
     }
 
     static void inserir_candidato(candidato) {
-        Sql sql = Utils.conect()
+        Sql sql = ConectionFactory.conect()
         sql.connection.autoCommit = false
         Date data_nascimento = Utils.converte_data_type(candidato.data_nascimento);
         List<String> parametros = [candidato.nome, candidato.sobrenome, data_nascimento, candidato.email, candidato.cpf, candidato.pais, candidato.cep, candidato.descricao, candidato.senha]
@@ -55,7 +57,7 @@ class CandidatoDAO {
     }
 
     static void inserir_competencias_candidato(candidato_ID) {
-        Sql sql = Utils.conect()
+        Sql sql = ConectionFactory.conect()
         sql.connection.autoCommit = false;
         println "Escolha a competência: "
         int opcao = 1;

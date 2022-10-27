@@ -6,12 +6,6 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 
 class Utils {
-    static def url = "jdbc:postgresql://localhost:5432/linketinder";
-    static def user = "hyago";
-    static def password = "acesso123";
-    static def driver = "org.postgresql.Driver";
-
-    static Sql conect(){ Sql sql = Sql.newInstance(url,user,password,driver)}
 
     static Date converte_data_type(data_nascimento){
         SimpleDateFormat formato_padrao = new SimpleDateFormat("yyyy-MM-dd");

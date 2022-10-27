@@ -1,14 +1,14 @@
 package Linketinder.Gradle.DAO
 
 import Linketinder.Gradle.Classes.PessoaJuridica
-import Linketinder.Gradle.Metodos.Utils
+import Linketinder.Gradle.Metodos.ConectionFactory
 import groovy.sql.Sql
 
 class EmpresaDAO {
 
 
     static void inserir_empresa(empresa) {
-        Sql sql = Utils.conect();
+        Sql sql = ConectionFactory.conect();
         sql.connection.autoCommit = false
         int opcao = 0;
         def empresa_ID
@@ -35,7 +35,7 @@ class EmpresaDAO {
 
 
     static void listar_empresas() {
-        Sql sql = Utils.conect();
+        Sql sql = ConectionFactory.conect();
         sql.eachRow('SELECT * FROM empresas') {
             lista_empresa ->
                 println("\nNome: ${lista_empresa.nome}" +
