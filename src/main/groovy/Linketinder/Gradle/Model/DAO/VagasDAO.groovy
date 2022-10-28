@@ -1,14 +1,15 @@
-package Linketinder.Gradle.DAO
+package Linketinder.Gradle.Model.DAO
 
-import Linketinder.Gradle.Classes.Vaga
-import Linketinder.Gradle.Metodos.ConectionFactory
+
+import Linketinder.Gradle.Model.Metodos.ConectionFactory
+import Linketinder.Gradle.Model.Classes.Vaga
 import groovy.sql.Sql
 
 class VagasDAO {
 
     private ConectionFactory conexao = new ConectionFactory()
 
-     void listar_vagas(){
+    void listar_vagas() {
         Sql sql = conexao.conect();
         sql.eachRow('SELECT * FROM vagas') {
             lista_vaga ->
@@ -23,7 +24,7 @@ class VagasDAO {
         sql.close();
     }
 
-     void listar_competencias_vagas(id){
+    void listar_competencias_vagas(id) {
         Sql sql = conexao.conect();
         sql.eachRow('SELECT com.nome as nome\n' +
                 'FROM vagas_competencias ccom\n' +
@@ -36,7 +37,7 @@ class VagasDAO {
         sql.close();
     }
 
-     void inserir_competencia_vaga(vagaID){
+    void inserir_competencia_vaga(vagaID) {
         Sql sql = conexao.conect();
         sql.connection.autoCommit = false
         println "Escolha a competência: "
@@ -56,7 +57,7 @@ class VagasDAO {
         sql.close()
     }
 
-     void menu_vaga(empresa_ID){
+    void menu_vaga(empresa_ID) {
         Vaga vaga = new Vaga();
         println "Digite o nome da Vaga"
         vaga.nome = System.in.newReader().readLine();
@@ -65,16 +66,16 @@ class VagasDAO {
         println "Digite o local da Vaga"
         vaga.localizacao = System.in.newReader().readLine();
 
-        inserir_vaga(vaga, empresa_ID )
+        inserir_vaga(vaga, empresa_ID)
     }
 
-     void inserir_vaga(Vaga vaga_empresa, empresa_ID) {
+    void inserir_vaga(Vaga vaga_empresa, empresa_ID) {
         Sql sql = conexao.conect();
         sql.connection.autoCommit = false
         def vaga_ID
 
-        List<String> parametros = [vaga_empresa.nome,vaga_empresa.descricao, vaga_empresa.localizacao, empresa_ID ]
-        try{
+        List<String> parametros = [vaga_empresa.nome, vaga_empresa.descricao, vaga_empresa.localizacao, empresa_ID]
+        try {
             sql.execute("INSERT INTO vagas(nome, descricao, localizacao, id_empresas) VALUES (?,?,?,?)", parametros);
             sql.commit();
             sql.eachRow("SELECT * FROM vagas WHERE descricao = $vaga_empresa.descricao") {
@@ -83,7 +84,7 @@ class VagasDAO {
             }
             inserir_competencia_vaga(vaga_ID);
             println("Vaga Cadastrada com Sucesso")
-        }catch (Exception ex) {
+        } catch (Exception ex) {
             sql.rollback()
             println(ex)
         }

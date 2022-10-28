@@ -1,4 +1,4 @@
-package Linketinder.Gradle.Metodos
+package Linketinder.Gradle.Model.Metodos
 
 import groovy.sql.Sql
 

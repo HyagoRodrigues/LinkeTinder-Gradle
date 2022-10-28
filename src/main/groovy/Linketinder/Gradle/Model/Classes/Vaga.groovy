@@ -1,4 +1,4 @@
-package Linketinder.Gradle.Classes
+package Linketinder.Gradle.Model.Classes
 
 class Vaga {
     String nome;

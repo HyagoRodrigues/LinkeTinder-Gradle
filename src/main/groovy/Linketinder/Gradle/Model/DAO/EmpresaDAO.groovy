@@ -1,7 +1,8 @@
-package Linketinder.Gradle.DAO
+package Linketinder.Gradle.Model.DAO
 
-import Linketinder.Gradle.Classes.PessoaJuridica
-import Linketinder.Gradle.Metodos.ConectionFactory
+
+import Linketinder.Gradle.Model.Metodos.ConectionFactory
+import Linketinder.Gradle.Model.Classes.PessoaJuridica
 import groovy.sql.Sql
 
 class EmpresaDAO {

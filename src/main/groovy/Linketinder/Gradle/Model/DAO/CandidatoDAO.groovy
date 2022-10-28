@@ -1,8 +1,9 @@
-package Linketinder.Gradle.DAO
+package Linketinder.Gradle.Model.DAO
 
-import Linketinder.Gradle.Classes.PessoaFisica
-import Linketinder.Gradle.Metodos.ConectionFactory
-import Linketinder.Gradle.Metodos.Utils
+
+import Linketinder.Gradle.Model.Metodos.ConectionFactory
+import Linketinder.Gradle.Model.Metodos.Utils
+import Linketinder.Gradle.Model.Classes.PessoaFisica
 import groovy.sql.Sql
 
 class CandidatoDAO {

@@ -3,7 +3,7 @@
  */
 package Linketinder.Gradle
 
-import Linketinder.Gradle.Classes.PessoaFisica
+
 import spock.lang.Specification
 
 class AppTest extends Specification {
