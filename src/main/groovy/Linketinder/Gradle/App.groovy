@@ -9,6 +9,9 @@ import Linketinder.Gradle.DAO.EmpresaDAO
 import Linketinder.Gradle.DAO.VagasDAO
 
 static void main(String[] args) {
+    CandidatoDAO candidato = new CandidatoDAO();
+    EmpresaDAO empresa = new EmpresaDAO();
+    VagasDAO vaga = new VagasDAO();
     Scanner input = new Scanner(System.in)
     boolean exit = false
     while(!exit){
@@ -22,20 +25,21 @@ static void main(String[] args) {
         )
         int opcao = input.nextInt();
         switch(opcao){
+
             case 1:
-                EmpresaDAO.listar_empresas()
+                empresa.listar_empresas()
                 break
             case 2:
-                CandidatoDAO.listar_candidatos()
+                candidato.listar_candidatos()
                 break
             case 3:
-                VagasDAO.listar_vagas()
+                vaga.listar_vagas()
                 break
             case 4:
-                CandidatoDAO.menu_candidato()
+                candidato.menu_candidato()
                 break
             case 5:
-                EmpresaDAO.menu_empresa()
+                empresa.menu_empresa()
                 break
             case 6:
                 exit = true

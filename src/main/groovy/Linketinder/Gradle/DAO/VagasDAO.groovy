@@ -5,8 +5,11 @@ import Linketinder.Gradle.Metodos.ConectionFactory
 import groovy.sql.Sql
 
 class VagasDAO {
-    static void listar_vagas(){
-        Sql sql = ConectionFactory.conect();
+
+    private ConectionFactory conexao = new ConectionFactory()
+
+     void listar_vagas(){
+        Sql sql = conexao.conect();
         sql.eachRow('SELECT * FROM vagas') {
             lista_vaga ->
                 println("\nNome: ${lista_vaga.nome}" +
@@ -20,8 +23,8 @@ class VagasDAO {
         sql.close();
     }
 
-    static void listar_competencias_vagas(id){
-        Sql sql = ConectionFactory.conect();
+     void listar_competencias_vagas(id){
+        Sql sql = conexao.conect();
         sql.eachRow('SELECT com.nome as nome\n' +
                 'FROM vagas_competencias ccom\n' +
                 'JOIN vagas c ON c.id = ccom.id_vagas\n' +
@@ -33,8 +36,8 @@ class VagasDAO {
         sql.close();
     }
 
-    static void inserir_competencia_vaga(vagaID){
-        Sql sql = ConectionFactory.conect();
+     void inserir_competencia_vaga(vagaID){
+        Sql sql = conexao.conect();
         sql.connection.autoCommit = false
         println "Escolha a competência: "
         int op = 1;
@@ -53,7 +56,7 @@ class VagasDAO {
         sql.close()
     }
 
-    static void menu_vaga(empresa_ID){
+     void menu_vaga(empresa_ID){
         Vaga vaga = new Vaga();
         println "Digite o nome da Vaga"
         vaga.nome = System.in.newReader().readLine();
@@ -65,8 +68,8 @@ class VagasDAO {
         inserir_vaga(vaga, empresa_ID )
     }
 
-    static void inserir_vaga(Vaga vaga_empresa, empresa_ID) {
-        Sql sql = ConectionFactory.conect();
+     void inserir_vaga(Vaga vaga_empresa, empresa_ID) {
+        Sql sql = conexao.conect();
         sql.connection.autoCommit = false
         def vaga_ID
 

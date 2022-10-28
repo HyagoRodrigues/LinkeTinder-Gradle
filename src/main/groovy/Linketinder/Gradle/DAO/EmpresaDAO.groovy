@@ -5,14 +5,15 @@ import Linketinder.Gradle.Metodos.ConectionFactory
 import groovy.sql.Sql
 
 class EmpresaDAO {
+    VagasDAO vaga = new VagasDAO();
+    private ConectionFactory conexao = new ConectionFactory()
 
-
-    static void inserir_empresa(empresa) {
-        Sql sql = ConectionFactory.conect();
+    void inserir_empresa(empresa) {
+        Sql sql = conexao.conect();
         sql.connection.autoCommit = false
         int opcao = 0;
         def empresa_ID
-        List<String> parametros = [empresa.nome, empresa.cnpj,empresa.email, empresa.descricao, empresa.pais, empresa.cep, empresa.senha]
+        List<String> parametros = [empresa.nome, empresa.cnpj, empresa.email, empresa.descricao, empresa.pais, empresa.cep, empresa.senha]
         try {
             sql.executeInsert("INSERT INTO empresas(nome, cnpj, email, descricao, pais, cep, senha) VALUES(?,?,?,?,?,?,?)", parametros);
             sql.commit()
@@ -23,7 +24,7 @@ class EmpresaDAO {
             println "Deseja adicionar uma vaga para esta Empresa? 1- Sim / 2- Não"
             opcao = System.in.newReader().readLine().toInteger();
             if (opcao == 1) {
-                VagasDAO.menu_vaga(empresa_ID)
+                vaga.menu_vaga(empresa_ID)
             }
             println("Empresa Cadastrada com sucesso!")
         } catch (Exception ex) {
@@ -34,8 +35,8 @@ class EmpresaDAO {
     }
 
 
-    static void listar_empresas() {
-        Sql sql = ConectionFactory.conect();
+    void listar_empresas() {
+        Sql sql = conexao.conect();
         sql.eachRow('SELECT * FROM empresas') {
             lista_empresa ->
                 println("\nNome: ${lista_empresa.nome}" +
@@ -48,7 +49,7 @@ class EmpresaDAO {
     }
 
 
-    static void menu_empresa(){
+    void menu_empresa() {
         PessoaJuridica empresa = new PessoaJuridica();
         println "Digite o nome da Empresa"
         empresa.nome = System.in.newReader().readLine();

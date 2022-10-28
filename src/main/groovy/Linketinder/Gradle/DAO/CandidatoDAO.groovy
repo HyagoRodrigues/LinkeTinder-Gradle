@@ -7,9 +7,10 @@ import groovy.sql.Sql
 
 class CandidatoDAO {
 
+    private ConectionFactory conexao = new ConectionFactory()
 
-    static void listar_candidatos() {
-        def sql = ConectionFactory.conect()
+    void listar_candidatos() {
+        def sql = conexao.conect()
         sql.eachRow('SELECT * FROM candidatos') {
             lista_candidato ->
                 println("\nNome: ${lista_candidato.nome} ${lista_candidato.sobrenome}" +
@@ -21,8 +22,8 @@ class CandidatoDAO {
         sql.close();
     }
 
-    static void listar_competencias_candidato(id) {
-        def sql = ConectionFactory.conect();
+    void listar_competencias_candidato(id) {
+        def sql = conexao.conect();
         sql.eachRow('SELECT com.nome as nome\n' +
                 'FROM candidato_competencias ccom\n' +
                 'JOIN candidatos c ON c.id = ccom.id_candidato\n' +
@@ -34,8 +35,8 @@ class CandidatoDAO {
         sql.close();
     }
 
-    static void inserir_candidato(candidato) {
-        Sql sql = ConectionFactory.conect()
+    void inserir_candidato(candidato) {
+        Sql sql = conexao.conect()
         sql.connection.autoCommit = false
         Date data_nascimento = Utils.converte_data_type(candidato.data_nascimento);
         List<String> parametros = [candidato.nome, candidato.sobrenome, data_nascimento, candidato.email, candidato.cpf, candidato.pais, candidato.cep, candidato.descricao, candidato.senha]
@@ -56,8 +57,8 @@ class CandidatoDAO {
         sql.close()
     }
 
-    static void inserir_competencias_candidato(candidato_ID) {
-        Sql sql = ConectionFactory.conect()
+    void inserir_competencias_candidato(candidato_ID) {
+        Sql sql = conexao.conect()
         sql.connection.autoCommit = false;
         println "Escolha a competência: "
         int opcao = 1;
@@ -77,7 +78,7 @@ class CandidatoDAO {
 
     }
 
-    static void menu_candidato() {
+    void menu_candidato() {
         PessoaFisica candidato = new PessoaFisica()
         println "Digite o nome do Candidato"
         candidato.nome = System.in.newReader().readLine();
