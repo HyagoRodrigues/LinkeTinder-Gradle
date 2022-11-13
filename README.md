@@ -32,3 +32,10 @@ Você pode acessar os arquivos do projeto clicando [aqui](https://github.com/Hya
 - Funções refatoradas e separadas com as suas respectivas obrigações.
 - Mudança de nomes.
 - Aplicação do DRY (Don't Repeat Yourself )
+
+
+# Alterações feitas na Inegração com API:
+- Foi feita a configuração do Tomcat integrado com o Intellij
+- Criação do diretório Services onde contém as requests do desafio
+- Cadastro de candidato e empresa por meio dos endpoints (POST)
+- Obetnção de candidatos e empresas por meio dos endpoint (GET)
