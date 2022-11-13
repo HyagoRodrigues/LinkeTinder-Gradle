@@ -35,6 +35,20 @@ class EmpresaDAO {
         sql.close()
     }
 
+    void inserirEmpresaApi(empresa){
+        Sql sql = conexao.conect();
+        sql.connection.autoCommit = false
+        List<String> parametros = [empresa.nome, empresa.cnpj, empresa.email, empresa.descricao, empresa.pais, empresa.cep, empresa.senha]
+        try{
+            sql.executeInsert("INSERT INTO empresas(nome, cnpj, email, descricao, pais, cep, senha) VALUES(?,?,?,?,?,?,?)", parametros);
+            sql.commit()
+            println("Empresa Cadastrada com sucesso!")
+        }catch (Exception ex) {
+            sql.rollback()
+            println(ex)
+        }
+        sql.close()
+    }
 
     void listar_empresas() {
         Sql sql = conexao.conect();

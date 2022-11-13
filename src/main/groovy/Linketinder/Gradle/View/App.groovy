@@ -8,44 +8,47 @@ import Linketinder.Gradle.Controllers.EmpresaController
 import Linketinder.Gradle.Controllers.VagaController
 
 
-static void main(String[] args) {
-    CandidatoController candidato = new CandidatoController();
-    EmpresaController empresa = new EmpresaController();
-    VagaController vaga = new VagaController();
-    Scanner input = new Scanner(System.in)
-    boolean exit = false
-    while(!exit){
-        println("Escolha uma opção: " +
-                "\n 1 - Listar Empresas " +
-                "\n 2 - Listar Candidatos " +
-                "\n 3 - Listar Vagas" +
-                "\n 4 - Inserir novo Candidato " +
-                "\n 5 - Inserir nova Empresa " +
-                "\n 6 - Sair"
-        )
-        int opcao = input.nextInt();
-        switch(opcao){
+class App{
+    static void main(String[] args) {
+        CandidatoController candidato = new CandidatoController();
+        EmpresaController empresa = new EmpresaController();
+        VagaController vaga = new VagaController();
+        Scanner input = new Scanner(System.in)
+        boolean exit = false
+        while(!exit){
+            println("Escolha uma opção: " +
+                    "\n 1 - Listar Empresas " +
+                    "\n 2 - Listar Candidatos " +
+                    "\n 3 - Listar Vagas" +
+                    "\n 4 - Inserir novo Candidato " +
+                    "\n 5 - Inserir nova Empresa " +
+                    "\n 6 - Sair"
+            )
+            int opcao = input.nextInt();
+            switch(opcao){
 
-            case 1:
-                empresa.listar_empresas()
-                break
-            case 2:
-                candidato.listar_candidatos()
-                break
-            case 3:
-                vaga.listar_vagas()
-                break
-            case 4:
-                candidato.inserir_candidato()
-                break
-            case 5:
-                empresa.inserir_empresa()
-                break
-            case 6:
-                exit = true
-                break
-            default :
-                println("Escolha uma opção válida")
+                case 1:
+                    empresa.listar_empresas()
+                    break
+                case 2:
+                    candidato.listar_candidatos()
+                    break
+                case 3:
+                    vaga.listar_vagas()
+                    break
+                case 4:
+                    candidato.inserir_candidato()
+                    break
+                case 5:
+                    empresa.inserir_empresa()
+                    break
+                case 6:
+                    exit = true
+                    break
+                default :
+                    println("Escolha uma opção válida")
+            }
         }
     }
+
 }

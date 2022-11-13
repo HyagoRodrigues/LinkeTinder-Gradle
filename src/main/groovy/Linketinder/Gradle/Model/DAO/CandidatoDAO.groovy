@@ -104,4 +104,20 @@ class CandidatoDAO {
         inserir_candidato(candidato)
     }
 
+    void inserirCandidatoApi(candidato){
+        Date data = Utils.converte_data_type(candidato.data_nascimento);
+        List<String> parametros = [candidato.nome, candidato.sobrenome, data, candidato.email, candidato.cpf, candidato.pais, candidato.cep, candidato.descricao, candidato.senha]
+        Sql sql = conexao.conect()
+        sql.connection.autoCommit = false
+        try {
+            sql.executeInsert("INSERT INTO candidatos(nome, sobrenome, data_nascimento, email, cpf, pais, cep, descricao, senha) VALUES (?,?,?,?,?,?,?,?,?)", parametros)
+            sql.commit()
+            println("Candidato Cadastrado com sucesso!")
+        } catch (Exception ex) {
+            sql.rollback()
+            println(ex)
+        }
+        sql.close()
+    }
+
 }
